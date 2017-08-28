@@ -12,14 +12,14 @@ const propTypes = {
 const Layout = (props) =>
   props.domainData.isLoaded
     ? (
-      <div id='layout'>
-        <Header />
-        <Main />
-        <Footer />
-      </div>
-    ) : (
-      <LoadingOverlay />
-    )
+    <div id='layout'>
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  ) : (
+    <LoadingOverlay />
+  )
 
 Layout.propTypes = propTypes
 
