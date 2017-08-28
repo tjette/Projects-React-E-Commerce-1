@@ -1,7 +1,6 @@
 {
-  "name": "E-Commerce-React-client",
+  "name": "client",
   "version": "0.1.0",
-  "license": "ISC",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {

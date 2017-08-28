@@ -11,13 +11,21 @@ const UserSchema = new mongoose.Schema({
   reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}]
 })
 
-UserSchema.methods.loadData = function (data) {
+UserSchema.methods.loadData = function(data){
   this.name = data.name || this.name
   this.password = data.password || this.password
   this.address = data.address || this.address
 }
 
-UserSchema.methods.setMetaDates = function () {
+UserSchema.methods.addToCart = function(product_id){
+  this.cart.push(product_id)
+}
+
+UserSchema.methods.removeFromCart = function(product_id){
+  this.cart.splice(product_id)
+}
+
+UserSchema.methods.setMetaDates = function(){
   const newDate = new Date()
   this.created = this.created || newDate
   this.modified = newDate

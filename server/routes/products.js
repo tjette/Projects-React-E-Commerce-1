@@ -40,7 +40,6 @@ Router.route('/:product_id')
     Product.findById(req.params.product_id, (err, product) => {
       product.loadData(req.body)
       product.setMetaDates()
-      console.log('PUTTING PRODUCT', product)
       product.save((err, savedProduct) => {
         if (err) {
           res.json({ message: err, data: null })

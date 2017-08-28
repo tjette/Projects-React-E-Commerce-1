@@ -3,7 +3,6 @@ process.env.NODE_ENV = 'test'
 const mongoose = require('mongoose')
 const User = require('../models/User')
 const Product = require('../models/Product')
-const Order = require('../models/Order')
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const server = require('../server')
@@ -194,47 +193,49 @@ describe('Users', () => {
     })
   })
 
-  describe('GET/users/:userId/orders orders', () => {
-    it(`it should GET a user's orders given a user's id`, (done) => {
-      const product = new Product({
+  describe('/PUT/cart/add/:user_id cart', () => {
+    it('it should add a product to the user cart via PUT', (done) => {
+      const created = new Date()
+      const user = new User({
+        name: 'John Johnsons',
+        password: 'dudesocks909',
+        address: {
+          street: '2800 E. Failroad',
+          apt: '',
+          city: 'Lamesville',
+          state: 'Colorado',
+          zip: '80433'
+        },
+        created: created,
+        modified: created,
+        cart: []
+      })
+
+      const purchase = new Product({
         name: 'Netgear Nighthawk x10',
         price: 449.95,
         category: 'Electronics',
-        image: 'n/a'
+        image: 'n/a',
+        created: created,
+        modified: created
       })
-      product.setMetaDates()
-      product.save((err, product) => {
-        const order = new Order({
-          products: [product._id]
-        })
-        order.setStatus()
-        order.save((err, order) => {
-          const user = new User({
-            name: 'John Johnsons',
-            password: 'dudesocks909',
-            address: {
-              street: '2800 E. Failroad',
-              apt: '',
-              city: 'Lamesville',
-              state: 'Colorado',
-              zip: '80433'
-            },
-            orders: [order._id]
-          })
-          user.setMetaDates()
-          user.save((err, user) => {
-            chai
-              .request(server)
-              .get(`/api/users/${user._id}/orders`)
-              .end((err, res) => {
-                res.should.have.status(200)
-                res.should.have.property('body')
-                res.body.should.be.a('array')
-                res.body.length.should.eql(1)
-                res.body[0].should.be.a('object')
-                done()
-              })
-          })
+
+      purchase.save((err, purchase) => {
+        user.save((err, user) => {
+          chai
+            .request(server)
+            .put(`/api/users/cart/add/${user._id}`)
+            .send({product_id: purchase._id})
+            .end((err, res) => {
+              res.should.have.status(200)
+              res.body.should.be.a('object')
+              res.body.should.have.property('message')
+              res.body.message.length.should.be.above(0)
+              res.body.should.have.property('data')
+              res.body.data.should.be.a('array')
+              res.body.data.length.should.be.above(0)
+              done()
+            })
         })
       })
     })

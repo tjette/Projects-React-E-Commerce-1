@@ -25,6 +25,7 @@ describe('Orders', () => {
       chai.request(server)
         .get('/api/orders')
         .end((err, res) => {
+          console.log(res)
           res.should.have.status(200)
           res.should.have.property('body')
           res.body.should.be.a('object')

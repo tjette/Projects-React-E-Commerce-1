@@ -7,5 +7,5 @@ console.log('Launching mocha testing server...')
 if (isWin) {
   exec('SET NODE_ENV=test && mocha --timeout 10000')
 } else {
-  exec('NODE_ENV=test && mocha --timeout 10000')
+  exec('NODE_ENV=test && mongod & sleep 2 && mocha --timeout 10000')
 }

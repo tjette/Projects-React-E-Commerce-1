@@ -1,10 +1,19 @@
-import React from 'react'
-import DomainDataProvider from './DomainDataProvider'
-import {BrowserRouter} from 'react-router-dom'
+import React, { Component } from 'react'
+import Layout from './Layout'
+import {User} from './User'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-const App = () =>
-  <BrowserRouter>
-    <DomainDataProvider />
-  </BrowserRouter>
+class App extends Component {
+  render () {
+    return (
+      <Router>
+        <User>
+          <Layout />
+        </User>
+      </Router>
+
+    )
+  }
+}
 
 export default App

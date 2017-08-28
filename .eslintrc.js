@@ -1,4 +1,7 @@
 module.exports = {
+  ecmaFeatures: {
+    globalReturn: false
+  },
   env: {
     browser: true,
     jest: true,
