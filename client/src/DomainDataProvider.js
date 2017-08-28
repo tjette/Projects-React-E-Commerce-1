@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import Layout from './Layout'
-import {getAllProducts} from './serverApi'
+import Layout from './components/structure/Layout'
+import {getAllProducts} from './lib/serverApi'
 
 class DomainDataProvider extends Component {
   state = {
@@ -18,6 +18,7 @@ class DomainDataProvider extends Component {
 
   render () {
     const domainData = {
+      isLoaded: this.state.isLoaded,
       products: this.state.products
     }
 
