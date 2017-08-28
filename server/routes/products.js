@@ -7,6 +7,7 @@ Router.route('/')
   .get((req, res) => {
     Product.find((err, products) => {
       if (err) {
+        console.log(err)
         res.json({ message: err, data: null })
       } else {
         res.json({ message: 'Successfully retrieved all products!', data: products })
@@ -18,6 +19,8 @@ Router.route('/')
     product.loadData(req.body)
     product.setMetaDates()
     product.save((err, savedProduct) => {
+      console.log('saved product', savedProduct)
+
       if (err) {
         res.json({ message: err, data: null })
       } else {

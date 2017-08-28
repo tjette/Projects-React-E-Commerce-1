@@ -14,7 +14,7 @@ const Layout = (props) =>
     ? (
       <div id='layout'>
         <Header />
-        <Main />
+        <Main domainData={props.domainData} />
         <Footer />
       </div>
     ) : (
