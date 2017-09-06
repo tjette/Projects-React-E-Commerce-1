@@ -1,7 +1,6 @@
 import React from 'react'
 const styles = {
   aboutHeader: {
-    marginTop: 50,
     textAlign: 'center'
   },
   aboutSectionDiv: {

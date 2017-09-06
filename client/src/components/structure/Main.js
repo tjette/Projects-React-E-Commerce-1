@@ -9,10 +9,10 @@ const styles = {
   main: {
     background: 'url(https://thumbs.dreamstime.com/z/thin-line-web-e-commerce-shopping-mint-seamless-pattern-vector-retail-store-market-design-background-trendy-61035544.jpg) no-repeat center center fixed',
     position: 'fixed',
-    top: 50,
+    top: 100,
     left: 0,
     right: 0,
-    bottom: 25,
+    height: 2000,
     overflow: 'scroll'
   }
 }

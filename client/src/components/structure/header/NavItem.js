@@ -5,12 +5,13 @@ import {NavLink} from 'react-router-dom'
 const styles = {
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  textDecoration: 'none'
 }
 const NavItem = (props) => {
   return (
     <div style={styles}>
-      <NavLink to={props.to}>{props.children}</NavLink>
+      <NavLink className='navBar' to={props.to}>{props.children}</NavLink>
     </div>
   )
 }

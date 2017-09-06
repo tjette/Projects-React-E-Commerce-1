@@ -6,7 +6,10 @@ const propTypes = {
   domainData: AppPropTypes.domainData,
   history: PropTypes.object.isRequired
 }
-
+const styles = {
+  display: 'flex',
+  justityContent: 'center'
+}
 class AddProductContainer extends Component {
   state = {
     name: '',
@@ -21,10 +24,10 @@ onNameChanged = (event) => this.setState({
 onCategoryChanged = (event) => this.setState({category: event.target.value})
 onImageChanged = (event) => this.setState({image: event.target.value})
 onPriceChanged = (event) => {
-const price = event.target.value || '0'
-this.setState({
-  price: parseFloat(price)
-})
+  const price = event.target.value || '0'
+  this.setState({
+    price: parseFloat(price)
+  })
 }
 
 onSubmit = (event) => {
@@ -39,20 +42,21 @@ isFormValid = () => this.state.name && this.state.category && this.state.image &
 render () {
   return (
     <div>
-        <AddProductForm
-          name={this.state.name}
-          onNameChanged={this.onNameChanged}
-          category={this.state.category}
-          onCategoryChanged={this.onCategoryChanged}
-          image={this.state.image}
-          onImageChanged={this.onImageChanged}
-          price={this.state.price}
-          onPriceChanged={this.onPriceChanged}
-          onSubmit={this.onSubmit}
-          />
-      </div>
-    )
-  }
+      <AddProductForm
+        style={styles}
+        name={this.state.name}
+        onNameChanged={this.onNameChanged}
+        category={this.state.category}
+        onCategoryChanged={this.onCategoryChanged}
+        image={this.state.image}
+        onImageChanged={this.onImageChanged}
+        price={this.state.price}
+        onPriceChanged={this.onPriceChanged}
+        onSubmit={this.onSubmit}
+      />
+    </div>
+  )
+}
 }
 
 AddProductContainer.propTypes = propTypes

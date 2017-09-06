@@ -1,3 +1,19 @@
 .whatWeDo:hover {
   background-color: white
 }
+form.submitForm {
+    border: 3px solid black;
+    height: 200px;
+}
+label.name {
+    padding-right: 29px;
+}
+label.category {
+    padding-right: 4px;
+}
+label.image {
+    padding-right: 23px;
+}
+label.price {
+    padding-right: 39px;
+}
