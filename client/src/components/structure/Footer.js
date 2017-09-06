@@ -13,7 +13,8 @@ const styles = {
     justifyContent: 'center',
     paddingLeft: 20,
     paddingRight: 20,
-    paddingTop: 50
+    paddingTop: 50,
+    fontFamily: 'Gloria Hallelujah'
   }
 }
 const Footer = () => {

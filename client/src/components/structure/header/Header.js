@@ -1,5 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import NavItem from './NavItem'
+
 const styles = {
   header: {
     position: 'fixed',
@@ -12,7 +14,8 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    fontFamily: 'Gloria Hallelujah'
   },
   active: {
     backgroundColor: 'red'
@@ -23,13 +26,13 @@ const styles = {
     color: 'white'
   }
 }
-const Header = () => {
+const Header = (props) => {
   return (
     <header style={styles.header}>
       <nav>
-        <NavLink style={styles.link} to='/'>Home</NavLink>
-        <NavLink style={styles.link} to='/about'>About</NavLink>
-        <NavLink style={styles.link} to='/shop'>Shop</NavLink>
+        <NavItem style={styles.link} to='/'>Home</NavItem>
+        <NavItem style={styles.link} to='/about'>About</NavItem>
+        <NavItem style={styles.link} to='/products'>Products</NavItem>
       </nav>
     </header>
   )
