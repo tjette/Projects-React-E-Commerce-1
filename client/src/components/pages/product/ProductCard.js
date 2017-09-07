@@ -12,7 +12,7 @@ const styles = {
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
-  borderWidth: 1,
+  borderWidth: 3,
   borderColor: 'black',
   borderStyle: 'solid'
 }
