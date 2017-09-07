@@ -6,16 +6,20 @@ import * as AppPropTypes from '../../../lib/propTypes'
 class EditProductContainer extends Component {
   static propTypes = {
     domainData: AppPropTypes.domainData,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired
   }
 
-  constructor () {
+  constructor (props) {
     super()
-    this.state = {
-      name: '',
-      category: '',
-      image: '',
-      price: ''
+    const productId = props.match.params.productId // get product id from url
+    const product = props.domainData.findProductById(productId) // get product object from domain data
+    this.state = { // copy product info into state
+      _id: product._id,
+      name: product.name,
+      category: product.category,
+      image: product.image,
+      price: product.price
     }
   }
 
@@ -25,7 +29,9 @@ class EditProductContainer extends Component {
   onPriceChanged = (event) => this.setState({price: event.target.value})
   onSubmit = (event) => {
     event.preventDefault()
-    console.log('Edit product submitted')
+    this.props.domainData.updateProduct(this.state)
+    this.props.history.push('/products')
+    console.log('form submitted')
   }
   render () {
     return (

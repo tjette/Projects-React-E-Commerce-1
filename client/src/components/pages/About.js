@@ -12,11 +12,6 @@ const styles = {
   },
   aboutSectionContent: {
     display: 'flex'
-  },
-  aboutDivContainer: {
-    background: 'url(https://thumbs.dreamstime.com/z/thin-line-web-e-commerce-shopping-mint-seamless-pattern-vector-retail-store-market-design-background-trendy-61035544.jpg) no-repeat center center fixed',
-    backgroundSize: 'cover',
-    fontFamily: 'Gloria Hallelujah'
   }
 }
 // display: flex;
@@ -27,7 +22,7 @@ const styles = {
 
 const About = () => {
   return (
-    <div style={styles.aboutDivContainer}>
+    <div>
       <div>
         <h1 style={styles.aboutHeader}>About</h1>
       </div>

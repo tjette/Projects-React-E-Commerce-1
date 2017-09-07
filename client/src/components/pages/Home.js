@@ -3,15 +3,7 @@ import {Link} from 'react-router-dom'
 
 const styles = {
   header: {
-    background: 'url(https://thumbs.dreamstime.com/z/thin-line-web-e-commerce-shopping-mint-seamless-pattern-vector-retail-store-market-design-background-trendy-61035544.jpg) no-repeat center center fixed',
-    paddingTop: 100,
-    backgroundSize: 'cover',
-    paddingBottom: 300,
-    top: 5,
-    display: 'flex',
-    justifyContent: 'center',
-    fontFamily: 'Gloria Hallelujah'
-
+    textAlign: 'center'
   },
   button: {
     margin: 'auto',

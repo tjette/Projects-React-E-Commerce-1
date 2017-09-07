@@ -7,7 +7,7 @@ const styles = {
     top: 0,
     left: 0,
     right: 0,
-    height: 100,
+    height: 130,
     backgroundColor: 'gray',
     display: 'flex',
     justifyContent: 'space-around',
@@ -24,6 +24,7 @@ const Header = (props) => {
         <NavItem to='/'>Home</NavItem>
         <NavItem to='/about'>About</NavItem>
         <NavItem to='/products'>Products</NavItem>
+        <NavItem to='/signUp'>Sign Up</NavItem>
       </nav>
     </header>
   )
