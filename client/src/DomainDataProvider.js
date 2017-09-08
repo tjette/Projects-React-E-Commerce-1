@@ -5,7 +5,9 @@ import * as ServerApi from './lib/serverApi'
 class DomainDataProvider extends Component {
   state = {
     isLoaded: false,
-    products: []
+    products: [],
+    user: null,
+
   }
 
   componentDidMount () {
@@ -36,6 +38,13 @@ class DomainDataProvider extends Component {
       }
     }
   }
+  signUpUser = (user) =>
+    ServerApi.signUpUser(user, (savedUser) => this.setState({user: savedUser}))
+
+  loginUser = (email, password) =>
+    ServerApi.loginUser(email, password, (loggedIn) => {
+      console.log('loginUser called')
+    })
 
   render () {
     const domainData = {
@@ -44,7 +53,9 @@ class DomainDataProvider extends Component {
       addProduct: this.addProduct,
       deleteProduct: this.deleteProduct,
       findProductById: this.findProductById,
-      updateProduct: this.updateProduct
+      updateProduct: this.updateProduct,
+      signUpUser: this.signUpUser,
+      loginUser: this.loginUser
     }
 
     return (

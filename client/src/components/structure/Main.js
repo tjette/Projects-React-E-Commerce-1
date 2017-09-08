@@ -27,7 +27,7 @@ const Main = (props) => {
       <Route path='/' exact component={Home} />
       <Route path='/about' component={About} />
       <Route path='/products' render={() => <Products domainData={props.domainData} />} />
-      <Route path='/signUp' render={() => <SignUpFormContainer domainData={props.domainData} />} />
+      <Route path='/signup' render={() => <SignUpFormContainer domainData={props.domainData}  />} />
     </main>
   )
 }

@@ -1,10 +1,17 @@
 import React, {Component} from 'react'
 import SignUpForm from './SignUpForm'
+import {withRouter} from 'react-router-dom'
+import * as AppPropTypes from '../../../lib/propTypes'
+import PropTypes from 'prop-types'
 
 const styles = {
   backgroundColor: 'blue'
 }
 class SignUpFormContainer extends Component {
+  static propTypes = {
+    domainData: AppPropTypes.domainData,
+    history: PropTypes.object.isRequired
+  }
 
   state = {
     firstName: '',
@@ -20,8 +27,10 @@ class SignUpFormContainer extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    console.log('Submitted Form')
+    this.props.domainData.signUpUser(this.state)
+    this.props.history.push('/')
   }
+
   render () {
     return (
       <div>
@@ -42,4 +51,4 @@ class SignUpFormContainer extends Component {
   }
 }
 
-export default SignUpFormContainer
+export default withRouter(SignUpFormContainer)
