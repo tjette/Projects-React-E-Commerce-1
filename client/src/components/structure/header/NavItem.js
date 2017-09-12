@@ -6,12 +6,13 @@ const styles = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  textDecoration: 'none'
+  textDecoration: 'none',
+  color: 'black'
 }
 const NavItem = (props) => {
   return (
-    <div style={styles}>
-      <NavLink className='navBar' to={props.to}>{props.children}</NavLink>
+    <div>
+      <NavLink style={styles} className='navBar' to={props.to}>{props.children}</NavLink>
     </div>
   )
 }

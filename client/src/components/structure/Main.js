@@ -5,6 +5,7 @@ import Home from '../pages/Home'
 import About from '../pages/About'
 import Products from '../pages/product/Products'
 import SignUpFormContainer from '../pages/auth/SignUpFormContainer'
+import LoginFormContainer from '../pages/auth/LoginFormContainer'
 
 const styles = {
   main: {
@@ -27,7 +28,8 @@ const Main = (props) => {
       <Route path='/' exact component={Home} />
       <Route path='/about' component={About} />
       <Route path='/products' render={() => <Products domainData={props.domainData} />} />
-      <Route path='/signup' render={() => <SignUpFormContainer domainData={props.domainData}  />} />
+      <Route path='/signup' render={() => <SignUpFormContainer domainData={props.domainData} />} />
+      <Route path='/login' render={() => <LoginFormContainer domainData={props.domainData} />} />
     </main>
   )
 }

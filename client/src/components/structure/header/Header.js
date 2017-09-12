@@ -7,11 +7,12 @@ const styles = {
     top: 0,
     left: 0,
     right: 0,
-    height: 130,
+    height: 50,
     backgroundColor: 'gray',
     display: 'flex',
     justifyContent: 'space-around',
-    fontFamily: 'Gloria Hallelujah'
+    fontFamily: 'Gloria Hallelujah',
+    color: 'black'
   },
   active: {
     backgroundColor: 'red'
@@ -19,12 +20,13 @@ const styles = {
 }
 const Header = (props) => {
   return (
-    <header style={styles.header}>
-      <nav>
+    <header>
+      <nav style={styles.header}>
         <NavItem to='/'>Home</NavItem>
         <NavItem to='/about'>About</NavItem>
         <NavItem to='/products'>Products</NavItem>
         <NavItem to='/signUp'>Sign Up</NavItem>
+        <NavItem to='/login'>Log In</NavItem>
       </nav>
     </header>
   )

@@ -20,7 +20,8 @@ class LoginFormContainer extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    console.log('Login information Submitted')
+    this.props.domainData.loginUser(this.state)
+    this.props.history.push('/')
   }
   render () {
     return (

@@ -40,19 +40,19 @@ const SignUpForm = (props) => {
       <h1 style={styles.header}>Sign Up Form</h1>
       <form style={styles.form} onSubmit={props.onSubmit}>
         <div style={styles.formFields}>
-          <label>First Name</label>
+          <label className='firstName'>First Name</label>
           <input type='text' value={props.firstName} onChange={props.onFirstNameChanged} />
         </div>
         <div style={styles.formFields}>
-          <label>Last Name</label>
+          <label className='lastName'>Last Name</label>
           <input type='text' value={props.lastName} onChange={props.onLastNameChanged} />
         </div>
         <div style={styles.formFields}>
-          <label>Email</label>
+          <label className='email'>Email</label>
           <input type='text' value={props.email} onChange={props.onEmailChanged} />
         </div>
         <div style={styles.formFields}>
-          <label>Password</label>
+          <label className='password'>Password</label>
           <input type='text' value={props.password} onChange={props.onPasswordChanged} />
         </div>
         <div style={styles.formFields}>

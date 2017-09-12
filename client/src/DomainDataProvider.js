@@ -7,6 +7,7 @@ class DomainDataProvider extends Component {
     isLoaded: false,
     products: [],
     user: null,
+    loggedIn: null
 
   }
 
@@ -41,10 +42,13 @@ class DomainDataProvider extends Component {
   signUpUser = (user) =>
     ServerApi.signUpUser(user, (savedUser) => this.setState({user: savedUser}))
 
-  loginUser = (email, password) =>
+  loginUser = (email, password) => {
     ServerApi.loginUser(email, password, (loggedIn) => {
+      this.setState({ user: loggedIn })
       console.log('loginUser called')
+      console.log(loggedIn, 'logged in')
     })
+  }
 
   render () {
     const domainData = {
