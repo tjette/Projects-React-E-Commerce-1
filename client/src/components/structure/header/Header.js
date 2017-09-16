@@ -1,6 +1,9 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import injectSheet from 'react-jss'
 import NavItem from './NavItem'
+import PropTypes from 'prop-types'
+import * as AppPropTypes from '../../../lib/propTypes'
 
 const styles = {
   header: {
@@ -12,24 +15,43 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-around',
     fontFamily: 'Gloria Hallelujah',
-    color: 'black'
+    color: 'black',
+    '&:hover': {
+    },
+    '& a:hover': {
+      backgroundColor: 'white'
+    }
   },
   active: {
     backgroundColor: 'red'
   }
 }
+const enhancer = injectSheet(styles)
+
 const Header = (props) => {
+  console.log('user', props.domainData.user)
+    console.log(props.domainData)
   return (
     <header>
-      <nav style={styles.header}>
+      <nav className={props.classes.header}>
         <NavItem to='/'>Home</NavItem>
         <NavItem to='/about'>About</NavItem>
         <NavItem to='/products'>Products</NavItem>
         <NavItem to='/signUp'>Sign Up</NavItem>
         <NavItem to='/login'>Log In</NavItem>
+        {
+          props.domainData.user ?
+            <p>{props.domainData.user}</p>
+            : <p>Not Logged In</p>
+        }
       </nav>
     </header>
   )
 }
 
-export default Header
+Header.propTypes = {
+  classes: PropTypes.object.isRequired,
+  domainData: AppPropTypes.domainData
+}
+
+export default enhancer(Header)

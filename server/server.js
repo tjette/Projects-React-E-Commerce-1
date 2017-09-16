@@ -7,6 +7,7 @@ const productRoutes = require('./routes/products')
 const userRoutes = require('./routes/users')
 const reviewRoutes = require('./routes/reviews')
 const orderRoutes = require('./routes/orders')
+const cookieParser = require('cookie-parser')
 
 const app = express()
 const port = 3001
@@ -14,6 +15,7 @@ const port = 3001
 mongoose.connect('mongodb://localhost/e-commerce')
 
 app.use(bodyParser.json())
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(session({

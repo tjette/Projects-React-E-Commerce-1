@@ -16,7 +16,7 @@ module.exports = function (app, passport) {
               if (err) {
                 return res.status(500).json(err)
               } else {
-                return res.json(user)
+                return res.json({data: user})
               }
             })
           }
@@ -39,10 +39,31 @@ module.exports = function (app, passport) {
         console.log(user)
         return res.json({
           message: 'Successfully logged in. Welcome back!',
-          user: user
+          data: user
         })
       })
     })
     authenticator(req, res, next)// set function equal to a variable above, then call this function here
+  })
+
+  app.get('/api/get_user', (req, res, next) => {
+    console.log(Object.keys(req).sort) // endpoint makes more sense as "get_user" rather than "login"
+    if (req.user) { // only exists (part of the req object) if someone has successfully logged in
+      console.log('user IS logged in')
+      res.json({data: req.user, isAuthed: true}) // if the user is in, show them
+    } else { // otherwise user gets an error (pop up message) and can't login
+      console.log('NOT logged in')
+      res.json({
+        isAuthed: false,
+        message: 'You are not logged in!'
+      })
+    }
+  })
+
+  app.get('/api/logout', (req, res) => {
+    req.logout()
+    return res.status(200).json({
+      message: 'Logout successful'
+    })
   })
 }

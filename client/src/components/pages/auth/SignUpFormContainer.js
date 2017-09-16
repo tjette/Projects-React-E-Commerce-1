@@ -28,6 +28,8 @@ class SignUpFormContainer extends Component {
   onSubmit = (event) => {
     event.preventDefault()
     this.props.domainData.signUpUser(this.state)
+    alert(`Welcome, ${this.state.firstName}`)
+
     this.props.history.push('/')
   }
 
@@ -35,6 +37,7 @@ class SignUpFormContainer extends Component {
     return (
       <div>
         <SignUpForm
+
           style={styles}
           firstName={this.state.firstName}
           lastName={this.state.lastName}

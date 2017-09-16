@@ -6,30 +6,38 @@ class DomainDataProvider extends Component {
   state = {
     isLoaded: false,
     products: [],
-    user: null,
-    loggedIn: null
+    user: null
 
   }
 
   componentDidMount () {
     this.getAllProducts()
+    ServerApi.getUser()
+      .then(user =>
+        this.setState({
+          user: user
+        }))
   }
 
   getAllProducts = () =>
-    ServerApi.getAllProducts(products =>
-      this.setState({
-        isLoaded: true,
-        products
-      }))
+    ServerApi.getAllProducts()
+      .then(products =>
+        this.setState({
+          isLoaded: true,
+          products
+        }))
 
   addProduct = (newProduct) =>
-    ServerApi.addProduct(newProduct, this.getAllProducts)
+    ServerApi.addProduct(newProduct)
+      .then(this.getAllProducts)
 
   deleteProduct = (productId) =>
-    ServerApi.deleteProduct(productId, this.getAllProducts)
+    ServerApi.deleteProduct(productId)
+      .then(this.getAllProducts)
 
   updateProduct = (productId) =>
-    ServerApi.updateProduct(productId, this.getAllProducts)
+    ServerApi.updateProduct(productId)
+      .then(this.getAllProducts)
 
   findProductById = (productId) => {
     for (let i = 0; i < this.state.products.length; i++) {
@@ -40,20 +48,29 @@ class DomainDataProvider extends Component {
     }
   }
   signUpUser = (user) =>
-    ServerApi.signUpUser(user, (savedUser) => this.setState({user: savedUser}))
+    ServerApi.signUpUser(user)
+      .then((savedUser) => {
+        this.setState({
+          user: savedUser
+        })
+        return savedUser
+      })
 
-  loginUser = (email, password) => {
-    ServerApi.loginUser(email, password, (loggedIn) => {
-      this.setState({ user: loggedIn })
-      console.log('loginUser called')
-      console.log(loggedIn, 'logged in')
-    })
-  }
+  loginUser = (email, password) =>
+    ServerApi.loginUser(email, password)
+      .then((loggedInUser) => {
+        console.log(loggedInUser)
+        this.setState({
+          user: loggedInUser
+        })
+        return loggedInUser
+      })
 
   render () {
     const domainData = {
       isLoaded: this.state.isLoaded,
       products: this.state.products,
+      user: this.state.user,
       addProduct: this.addProduct,
       deleteProduct: this.deleteProduct,
       findProductById: this.findProductById,

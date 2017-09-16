@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
       <h1 style={styles.header}>E-COMMERCE STORE</h1>
-      <i className="fa fa-money" aria-hidden="true"></i>
+      <i className='fa fa-money' aria-hidden='true' />
 
       <Link to='/products'><button style={styles.button}>Go Shopping</button></Link>
     </div>

@@ -1,41 +1,44 @@
 import React from 'react'
+import injectSheet from 'react-jss'
+
 const styles = {
   aboutHeader: {
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: 'white',
+    opacity: 0.7
   },
   aboutSectionDiv: {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
     alignItems: 'center',
-    border: 'solid'
+    border: 'solid',
+    backgroundColor: 'white',
+    opacity: 0.7
   },
   aboutSectionContent: {
     display: 'flex'
   }
 }
-// display: flex;
-// justify-content: center;
-// align-items: center;
-// flex-wrap: wrap;
-// margin-top: 19px;
 
-const About = () => {
+const enhancer = injectSheet(styles)
+
+const About = (props) => {
   return (
     <div>
       <div>
-        <h1 style={styles.aboutHeader}>About</h1>
+        <h1 className={props.classes.aboutHeader}>About</h1>
       </div>
-      <div  className="whatWeDo" style={styles.aboutSectionDiv}>
-        <h3 style={styles.aboutSectionContent}>What We Do</h3>
-        <p style={styles.aboutSectionContent}>This is what we do</p>
+      <div className='whatWeDo' className={props.classes.aboutSectionDiv}>
+        <h3 className={props.classes.aboutSectionContent}>What We Do</h3>
+        <p className={props.classes.aboutSectionContent}>This is what we do</p>
       </div>
-      <div className="careerOpportunity"style={styles.aboutSectionDiv}>
-        <h3 style={styles.aboutSectionContent}>Career Opportunities</h3>
-        <p style={styles.aboutSectionContent}>Here is a list of careers</p>
+      <div className='careerOpportunity' className={props.classes.aboutSectionDiv}>
+        <h3 className={props.classes.aboutSectionContent}>Career Opportunities</h3>
+        <p className={props.classes.aboutSectionContent}>Here is a list of careers</p>
       </div>
     </div>
   )
 }
 
-export default About
+export default enhancer(About)

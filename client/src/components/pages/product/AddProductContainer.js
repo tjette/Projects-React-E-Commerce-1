@@ -2,14 +2,12 @@ import React, {Component} from 'react'
 import * as AppPropTypes from '../../../lib/propTypes'
 import AddProductForm from './AddProductForm'
 import PropTypes from 'prop-types'
+
 const propTypes = {
   domainData: AppPropTypes.domainData,
   history: PropTypes.object.isRequired
 }
-const styles = {
-  display: 'flex',
-  justityContent: 'center'
-}
+
 class AddProductContainer extends Component {
   state = {
     name: '',
@@ -43,7 +41,6 @@ render () {
   return (
     <div>
       <AddProductForm
-        style={styles}
         name={this.state.name}
         onNameChanged={this.onNameChanged}
         category={this.state.category}

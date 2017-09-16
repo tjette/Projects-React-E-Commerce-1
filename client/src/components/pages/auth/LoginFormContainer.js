@@ -20,8 +20,12 @@ class LoginFormContainer extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.domainData.loginUser(this.state)
-    this.props.history.push('/')
+    // this.props.domainData.loginUser(this.state.email, this.state.password)
+    this.props.domainData.loginUser(this.state.email, this.state.password)
+      .then((user) => {
+        this.props.history.push('/')
+        alert(`You are logged in ${user.local.firstName}`)
+      })
   }
   render () {
     return (
@@ -31,6 +35,7 @@ class LoginFormContainer extends Component {
         onEmailChanged={this.onEmailChanged}
         onPasswordChanged={this.onPasswordChanged}
         onSubmit={this.onSubmit}
+        domainData={this.domainData}
       />
     )
   }

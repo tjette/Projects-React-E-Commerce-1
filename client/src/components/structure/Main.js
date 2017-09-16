@@ -9,7 +9,7 @@ import LoginFormContainer from '../pages/auth/LoginFormContainer'
 
 const styles = {
   main: {
-    background: 'url(https://thumbs.dreamstime.com/z/thin-line-web-e-commerce-shopping-mint-seamless-pattern-vector-retail-store-market-design-background-trendy-61035544.jpg) no-repeat center center fixed',
+    background: 'url(http://destinationmissoula.org/assets/img/headers/golfing.jpg) no-repeat center center fixed',
     top: 100,
     left: 0,
     right: 0,

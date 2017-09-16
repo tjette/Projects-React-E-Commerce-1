@@ -1,76 +1,30 @@
-const getAllProducts = (callback) => {
-  const options = {
-    method: 'GET'
-  }
-
-  fetch('/api/products', options)
-    .then(response => response.json())
-    .then(json => callback(json.data))
-}
-
-const addProduct = (newProduct, callback) => {
+const ajaxRequest = (uri, method, body) => {
   const headers = new Headers({
     'Content-Type': 'application/json'
   })
   const options = {
-    headers,
-    method: 'POST',
-    body: JSON.stringify(newProduct)
+    headers: headers,
+    method: method,
+    body: JSON.stringify(body)
   }
-  fetch('/api/products', options)
+  return fetch(`/api/${uri}`, options)
     .then(response => response.json())
-    .then(json => callback(json.data))
+    .then(json => json.data)
+    .then(data => data)
 }
 
-const deleteProduct = (productId, callback) => {
-  const options = {
-    method: 'DELETE'
-  }
-  fetch(`/api/products/${productId}`, options)
-    .then(response => response.json())
-    .then(json => callback(json.data))
-}
+const getAllProducts = () => ajaxRequest('products', 'GET')
 
-const updateProduct = (product, callback) => {
-  const headers = new Headers({
-    'Content-Type': 'application/json'
-  })
-  const options = {
-    headers,
-    method: 'PUT',
-    body: JSON.stringify(product)
-  }
-  fetch(`/api/products/${product._id}`, options)
-    .then(response => response.json())
-    .then(json => callback(json.data))
-}
+const getUser = () => ajaxRequest('get_user', 'GET')
 
-const signUpUser = (user, callback) => {
-  const headers = new Headers({
-    'Content-Type': 'application/json'
-  })
-  const options = {
-    headers,
-    method: 'POST',
-    body: JSON.stringify(user)
-  }
-  fetch(`/api/signup`, options)
-    .then(response => response.json())
-    .then(json => callback(json))
-}
+const addProduct = (newProduct) => ajaxRequest('products', 'POST', newProduct)
 
-const loginUser = (email, password, callback) => {
-  const headers = new Headers({
-    'Content-Type': 'application/json'
-  })
-  const options = {
-    headers,
-    method: 'POST',
-    body: JSON.stringify({email, password})
-  }
-  fetch('/api/login', options)
-    .then(response => response.json())
-    .then(json => callback(json))
-}
+const deleteProduct = (productId) => ajaxRequest(`products/${productId}`, 'DELETE')
 
-export {getAllProducts, addProduct, deleteProduct, updateProduct, signUpUser, loginUser}
+const updateProduct = (product) => ajaxRequest(`products/${product._id}`, 'PUT', product)
+
+const signUpUser = (user) => ajaxRequest('signup', 'POST', user)
+
+const loginUser = (email, password) => ajaxRequest('login', 'POST', {email, password})
+
+export {getAllProducts, addProduct, deleteProduct, updateProduct, signUpUser, loginUser, getUser}
