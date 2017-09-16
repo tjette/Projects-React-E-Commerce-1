@@ -66,6 +66,9 @@ class DomainDataProvider extends Component {
         return loggedInUser
       })
 
+  logOut = () =>
+    ServerApi.logOut()
+
   render () {
     const domainData = {
       isLoaded: this.state.isLoaded,
@@ -76,7 +79,8 @@ class DomainDataProvider extends Component {
       findProductById: this.findProductById,
       updateProduct: this.updateProduct,
       signUpUser: this.signUpUser,
-      loginUser: this.loginUser
+      loginUser: this.loginUser,
+      logOut: this.logOut
     }
 
     return (

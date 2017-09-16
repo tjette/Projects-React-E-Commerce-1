@@ -1,5 +1,6 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Route} from 'react-router-dom'
+import Profile from '../../pages/Profile'
 import injectSheet from 'react-jss'
 import NavItem from './NavItem'
 import PropTypes from 'prop-types'
@@ -38,12 +39,17 @@ const Header = (props) => {
         <NavItem to='/about'>About</NavItem>
         <NavItem to='/products'>Products</NavItem>
         <NavItem to='/signUp'>Sign Up</NavItem>
-
         {
           props.domainData.user ?
-            <p>{props.domainData.user.local.firstName}</p>
+            <NavLink to='/profile'>{props.domainData.user.local.firstName}</NavLink>
             : <NavItem to='/login'>Log In</NavItem>
         }
+        {
+          props.domainData.user ?
+            <NavItem to='/logout'>Log Out</NavItem>
+            : null
+        }
+
       </nav>
     </header>
   )
