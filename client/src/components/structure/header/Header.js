@@ -38,11 +38,11 @@ const Header = (props) => {
         <NavItem to='/about'>About</NavItem>
         <NavItem to='/products'>Products</NavItem>
         <NavItem to='/signUp'>Sign Up</NavItem>
-        <NavItem to='/login'>Log In</NavItem>
+
         {
           props.domainData.user ?
-            <p>{props.domainData.user}</p>
-            : <p>Not Logged In</p>
+            <p>{props.domainData.user.local.firstName}</p>
+            : <NavItem to='/login'>Log In</NavItem>
         }
       </nav>
     </header>

@@ -27,4 +27,6 @@ const signUpUser = (user) => ajaxRequest('signup', 'POST', user)
 
 const loginUser = (email, password) => ajaxRequest('login', 'POST', {email, password})
 
-export {getAllProducts, addProduct, deleteProduct, updateProduct, signUpUser, loginUser, getUser}
+const logOut = () => ajaxRequest('logout', 'GET')
+
+export {getAllProducts, addProduct, deleteProduct, updateProduct, signUpUser, loginUser, getUser, logOut}

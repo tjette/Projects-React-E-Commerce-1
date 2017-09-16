@@ -1,24 +1,36 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import injectSheet from 'react-jss'
+import PropTypes from 'prop-types'
+
+const propTypes = {
+  classes: PropTypes.object.isRequired
+}
 
 const styles = {
   header: {
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: 'white',
+    opacity: 0.7
   },
   button: {
     margin: 'auto',
     display: 'block'
   }
 }
-const Home = () => {
+const enhancer = injectSheet(styles)
+
+const Home = (props) => {
   return (
     <div>
-      <h1 style={styles.header}>E-COMMERCE STORE</h1>
+      <h1 className={props.classes.header}>GOLF E-COMMERCE STORE</h1>
       <i className='fa fa-money' aria-hidden='true' />
 
-      <Link to='/products'><button style={styles.button}>Go Shopping</button></Link>
+      <Link to='/products'><button className={props.classes.button}>Go Shopping</button></Link>
     </div>
   )
 }
 
-export default Home
+Home.propTypes = propTypes
+
+export default enhancer(Home)
