@@ -41,7 +41,7 @@ const Header = (props) => {
         <NavItem to='/signUp'>Sign Up</NavItem>
         {
           props.domainData.user ?
-            <NavLink to='/profile'>{props.domainData.user.local.firstName}</NavLink>
+            <NavLink to='/profile'>Profile - {props.domainData.user.local.firstName}</NavLink>
             : <NavItem to='/login'>Log In</NavItem>
         }
         {
