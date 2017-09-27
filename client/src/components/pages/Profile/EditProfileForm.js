@@ -3,8 +3,12 @@ import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
 
 const propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  onFirstNameChanged: PropTypes.func.isRequired,
+  onLastNameChanged: PropTypes.func.isRequired,
   onEmailChanged: PropTypes.func.isRequired,
   onPasswordChanged: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -24,28 +28,29 @@ const styles = {
     opacity: 0.7,
     flexDirection: 'column',
     alignItems: 'center'
-  },
-  emailField: {
-    paddingRight: 48
-  },
-  passwordField: {
-    paddingRight: 20
   }
 }
 const enhancer = injectSheet(styles)
 
-const LoginForm = (props) => {
+const EditProfileForm = (props) => {
   return (
     <div>
-      <h1 className={props.classes.header}>Login Form</h1>
+      <h1 className={props.classes.header}>Edit Profile</h1>
       <form className={props.classes.form} onSubmit={props.onSubmit}>
-
         <div>
-          <label className={props.classes.emailField}>Email</label>
+          <label>First Name</label>
+          <input type='text' value={props.firstName} onChange={props.onFirstNameChanged} />
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input type='text' value={props.lastName} onChange={props.onLastNameChanged} />
+        </div>
+        <div>
+          <label>Email</label>
           <input type='text' value={props.email} onChange={props.onEmailChanged} />
         </div>
         <div>
-          <label className={props.classes.passwordField}>Password</label>
+          <label>Password</label>
           <input type='text' value={props.password} onChange={props.onPasswordChanged} />
         </div>
         <input type='submit' value='Submit' />
@@ -54,6 +59,6 @@ const LoginForm = (props) => {
   )
 }
 
-LoginForm.propTypes = propTypes
+EditProfileForm.propTypes = propTypes
 
-export default enhancer(LoginForm)
+export default enhancer(EditProfileForm)

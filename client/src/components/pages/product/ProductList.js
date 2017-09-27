@@ -50,13 +50,14 @@ const ProductList = (props) => {
       <div className={props.classes.productContainer}>
 
       {
-        props.domainData.products.length > 0 ?
-          props.domainData.products.map(product =>
-            <ProductCard
+          props.domainData.products.length > 0 ?
+            props.domainData.products.map(product =>
+              <ProductCard
               key={product._id}
               product={product}
               onDelete={() => props.domainData.deleteProduct(product._id)}
-              onEdit={() => props.history.push(`/products/edit/${product._id}`)} />
+              onEdit={() => props.history.push(`/products/edit/${product._id}`)}
+              onAddToCart={() => props.domainData.addToCart(product._id)} />
           )
           : <h1>No products have been added</h1>
       }

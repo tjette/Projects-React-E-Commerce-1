@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink, Route} from 'react-router-dom'
-import Profile from '../../pages/Profile'
+import Profile from '../../pages/Profile/Profile'
 import injectSheet from 'react-jss'
 import NavItem from './NavItem'
 import PropTypes from 'prop-types'
@@ -17,10 +17,17 @@ const styles = {
     justifyContent: 'space-around',
     fontFamily: 'Gloria Hallelujah',
     color: 'black',
-    '&:hover': {
+    // '&:hover': {
+    //   backgroundColor: 'white'
+    // },
+    '& a:link': {
+      color: 'black'
+    },
+    '& a:visited': {
+      color: 'white'
     },
     '& a:hover': {
-      backgroundColor: 'white'
+      color: 'white'
     }
   },
   active: {
@@ -39,6 +46,7 @@ const Header = (props) => {
         <NavItem to='/about'>About</NavItem>
         <NavItem to='/products'>Products</NavItem>
         <NavItem to='/signUp'>Sign Up</NavItem>
+        <NavItem to='/cart'>Cart</NavItem>
         {
           props.domainData.user ?
             <NavLink to='/profile'>Profile - {props.domainData.user.local.firstName}</NavLink>

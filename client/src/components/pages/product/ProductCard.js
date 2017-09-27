@@ -7,7 +7,10 @@ const propTypes = {
   product: AppPropTypes.product,
   onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired
+  onAddToCart: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  loggedIn: PropTypes.bool.isRequired
 }
 const styles = {
   productCard: {
@@ -32,8 +35,10 @@ const ProductCard = (props) => {
     <div className={props.classes.productCard}>
       <h1>{props.product.name}</h1>
       <h3>{props.product.price}</h3>
-      <button onClick={props.onDelete}>Delete Product</button>
-      <button onClick={props.onEdit}>Edit</button>
+
+      { props.isAdmin && props.loggedIn ? <button onClick={props.onDelete}>Delete Product</button> : null }
+      { props.isAdmin && props.loggedIn ? <button onClick={props.onEdit}>Edit</button> : null }
+      <button onClick={props.onAddToCart}>Add To Cart</button>
     </div>
   )
 }

@@ -3,8 +3,11 @@ import {Route} from 'react-router-dom'
 import * as AppPropTypes from '../../lib/propTypes'
 import Home from '../pages/Home'
 import About from '../pages/About'
-import Profile from '../pages/Profile'
+import ProfileContainer from '../pages/Profile/ProfileContainer'
 import Products from '../pages/product/Products'
+import Cart from '../pages/cart/Cart'
+import Checkout from '../pages/checkout/Checkout'
+import EditProfileContainer from '../pages/Profile/EditProfileContainer'
 import SignUpFormContainer from '../pages/auth/SignUpFormContainer'
 import LoginFormContainer from '../pages/auth/LoginFormContainer'
 
@@ -31,7 +34,10 @@ const Main = (props) => {
       <Route path='/products' render={() => <Products domainData={props.domainData} />} />
       <Route path='/signup' render={() => <SignUpFormContainer domainData={props.domainData} />} />
       <Route path='/login' render={() => <LoginFormContainer domainData={props.domainData} />} />
-      <Route path='/profile' render={(routeProps) => <Profile domainData={props.domainData} history={routeProps.history} />} />
+      <Route path='/profile' render={(routeProps) => <ProfileContainer domainData={props.domainData} history={routeProps.history} match={routeProps.match} />} />
+      <Route path='/profile/edit/' render={(routeProps) => <EditProfileContainer domainData={props.domainData} history={routeProps.history} match={routeProps.match} />} />
+      <Route path='/cart' render={() => <Cart domainData={props.domainData} />} />
+      <Route path='/checkout' render={() => <Checkout domainData={props.domainData} />} />
     </main>
   )
 }

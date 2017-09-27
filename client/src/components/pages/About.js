@@ -1,5 +1,10 @@
 import React from 'react'
 import injectSheet from 'react-jss'
+import PropTypes from 'prop-types'
+
+const propTypes = {
+  classes: PropTypes.object.isRequired
+}
 
 const styles = {
   aboutHeader: {
@@ -41,4 +46,5 @@ const About = (props) => {
   )
 }
 
+About.propTypes = propTypes
 export default enhancer(About)
