@@ -15,6 +15,8 @@ Router.route('/')
       })
   })
   .post((req, res) => {
+    console.log(req.user)
+    console.log(req.body)
     const order = new Order()
     order.setStatus(req.body)
     order.save((err, order) => {

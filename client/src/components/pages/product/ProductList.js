@@ -4,7 +4,6 @@ import * as AppPropTypes from '../../../lib/propTypes'
 import ProductCard from './ProductCard'
 import PropTypes from 'prop-types'
 import injectSheet from 'react-jss'
-import {withRouter} from 'react-router-dom'
 
 const styles = {
   productContainer: {
@@ -49,18 +48,18 @@ const ProductList = (props) => {
       <Link className={props.classes.link} to='/products/add'>Add Product</Link>
       <div className={props.classes.productContainer}>
 
-      {
-          props.domainData.products.length > 0 ?
-            props.domainData.products.map(product =>
+        {
+          props.domainData.products.length > 0
+            ? props.domainData.products.map(product =>
               <ProductCard
-              key={product._id}
-              product={product}
-              onDelete={() => props.domainData.deleteProduct(product._id)}
-              onEdit={() => props.history.push(`/products/edit/${product._id}`)}
-              onAddToCart={() => props.domainData.addToCart(product._id)} />
-          )
-          : <h1>No products have been added</h1>
-      }
+                key={product._id}
+                product={product}
+                onDelete={() => props.domainData.deleteProduct(product._id)}
+                onEdit={() => props.history.push(`/products/edit/${product._id}`)}
+                onAddToCart={() => props.domainData.addToCart(product._id)} />
+            )
+            : <h1>No products have been added</h1>
+        }
       </div>
     </div>
   )

@@ -1,6 +1,5 @@
 import React from 'react'
-import {NavLink, Route} from 'react-router-dom'
-import Profile from '../../pages/Profile/Profile'
+import {NavLink} from 'react-router-dom'
 import injectSheet from 'react-jss'
 import NavItem from './NavItem'
 import PropTypes from 'prop-types'
@@ -37,8 +36,6 @@ const styles = {
 const enhancer = injectSheet(styles)
 
 const Header = (props) => {
-  console.log('user', props.domainData.user)
-    console.log(props.domainData)
   return (
     <header>
       <nav className={props.classes.header}>
@@ -48,13 +45,13 @@ const Header = (props) => {
         <NavItem to='/signUp'>Sign Up</NavItem>
         <NavItem to='/cart'>Cart</NavItem>
         {
-          props.domainData.user ?
-            <NavLink to='/profile'>Profile - {props.domainData.user.local.firstName}</NavLink>
+          props.domainData.user
+            ? <NavLink to='/profile'>Profile - {props.domainData.user.local.firstName}</NavLink>
             : <NavItem to='/login'>Log In</NavItem>
         }
         {
-          props.domainData.user ?
-            <NavItem to='/logout'>Log Out</NavItem>
+          props.domainData.user
+            ? <NavItem to='/logout'>Log Out</NavItem>
             : null
         }
 

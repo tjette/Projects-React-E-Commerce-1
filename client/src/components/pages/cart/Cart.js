@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import PropTypes from 'prop-types'
 import * as AppPropTypes from '../../../lib/propTypes'
 import CartCard from './CartCard'
 
@@ -17,8 +16,8 @@ const Cart = (props) => {
       <h1>Cart</h1>
       <div>
         {
-          cartKeys.length ?
-            <div>{
+          cartKeys.length
+            ? <div>{
               cartKeys.map((productId, i) =>
                 <CartCard
                   key={i}
@@ -28,7 +27,7 @@ const Cart = (props) => {
                   quantity={props.domainData.cart[productId]}
                 />)
             }<div>
-              <h3>Total: {props.domainData.totalCart()}</h3>
+          : <h3>Total: {props.domainData.totalCart()}</h3>
               <Link to='/checkout'>Checkout</Link>
             </div>
             </div>

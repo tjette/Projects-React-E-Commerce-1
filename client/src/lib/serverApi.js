@@ -42,3 +42,5 @@ export const getUser = () => ajaxRequest('get_user', 'GET')
 export const updateUser = (user) => ajaxRequest(`/users`, 'PUT', user)
 
 export const logOut = () => ajaxRequest('logout', 'GET')
+
+export const addOrder = (order) => ajaxRequest('orders', 'POST', order)

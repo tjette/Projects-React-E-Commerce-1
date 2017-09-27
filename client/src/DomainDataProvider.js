@@ -9,8 +9,8 @@ class DomainDataProvider extends Component {
     user: null,
     cart: {},
     address: {
-      'billing': {},
-      'shipping': {}
+      billing: {},
+      shipping: {}
     }
 
   }
@@ -98,6 +98,15 @@ class DomainDataProvider extends Component {
       address[type][field] = value
       console.log(address)
       this.setState({address})
+    },
+    placeOrder: () => {
+      const order = {
+        billingAddress: this.state.address.billing,
+        shippingAddress: this.state.address.shipping,
+        cart: this.state.cart
+      }
+      ServerApi.addOrder(order)
+        .then(() => console.log('order placed', order))
     }
   }
 
@@ -122,8 +131,8 @@ class DomainDataProvider extends Component {
     }
 
     return (
-      this.state.isLoaded ?
-        <Layout domainData={domainData} />
+      this.state.isLoaded
+        ? <Layout domainData={domainData} />
         : null
     )
   }

@@ -26,6 +26,7 @@ const styles = {
 }
 const enhancer = injectSheet(styles)
 const confirmMessage = 'Remove Product?'
+
 const CartCard = (props) => {
   console.log(props)
 

@@ -20,6 +20,5 @@ export const domainData = PropTypes.shape({
   user: PropTypes.object.isRequired,
   loggedIn: PropTypes.bool.isRequired,
   loggedOut: PropTypes.bool.isRequired,
-  toggleEditing: PropTypes.func.isRequired,
   totalCart: PropTypes.func.isRequired
 }).isRequired
