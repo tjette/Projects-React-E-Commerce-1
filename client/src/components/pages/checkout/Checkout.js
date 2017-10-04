@@ -8,7 +8,7 @@ class Checkout extends Component {
   static propTypes = {
     domainData: AppPropTypes.domainData
   }
-  
+
 onSubmit = () => {
   this.props.domainData.placeOrder()
 }

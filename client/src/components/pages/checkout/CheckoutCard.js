@@ -5,7 +5,8 @@ import * as AppPropTypes from '../../../lib/propTypes'
 
 const propTypes = {
   product: AppPropTypes.domainData,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  quantity: PropTypes.number.isRequired
 }
 const styles = {
   orderContainer: {
@@ -24,6 +25,7 @@ const CheckoutCard = (props) => {
       <h1>Product: {props.product.name}</h1>
       <h3>Price: {props.product.price}</h3>
       <img src={props.product.image} />
+      <p>Quantity:{props.quantity}</p>
     </div>
   )
 }
