@@ -14,14 +14,12 @@ const app = express()
 const port = 3001
 app.set('trust proxy', '127.0.0.1')
 
-mongoose.connect('mongodb://localhost/e-commerce')
+mongoose.connect('mongodb://localhost/tech-job-site')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({
-  name: 'ecommerce',
-  secret: '42',
-  secure: false
+  secret: '42'
 }))
 app.use(passport.initialize())
 app.use(passport.session()) // persistent login sessions

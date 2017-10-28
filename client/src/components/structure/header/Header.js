@@ -46,7 +46,7 @@ const Header = (props) => {
         <NavItem to='/cart'>Cart</NavItem>
         {
           props.domainData.user
-            ? <NavLink to='/profile'>Profile - {props.domainData.user.local.firstName}</NavLink>
+            ? <NavItem to='/profile'>Profile - {props.domainData.user.local.firstName}</NavItem>
             : <NavItem to='/login'>Log In</NavItem>
         }
         {
